@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jesús Peacearrow — Memoria Indígena y Coautoría Simbiótica</title>
+<meta name="description" content="Jesús Peacearrow, autor de La Bárbara Conquista de las Indias. Manifiesto de Coautoría Simbiótica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --obsidian: #0b0b0d;
+    --obsidian-2: #131317;
+    --jade: #2f5d4f;
+    --jade-light: #4c8a76;
+    --gold: #c9a24b;
+    --gold-dim: #8a7239;
+    --parchment: #e9e2d0;
+    --parchment-dim: #a89f8c;
+    --blood: #6e2b2b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--obsidian);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Textura sutil de fondo */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(47,93,79,0.08), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(201,162,75,0.05), transparent 45%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(11,11,13,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,162,75,0.15);
+  }
+  .nav-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-name {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--parchment-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 120px 32px 60px;
+  }
+
+  .glyph-divider {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 28px;
+    opacity: 0.85;
+  }
+
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    letter-spacing: 0.02em;
+    color: var(--parchment);
+    line-height: 1.15;
+    max-width: 780px;
+  }
+
+  .hero .eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--jade-light);
+    margin-bottom: 18px;
+  }
+
+  .hero .tagline {
+    margin-top: 26px;
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--parchment-dim);
+    max-width: 560px;
+  }
+
+  .hero .author-name {
+    margin-top: 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 36px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--parchment-dim);
+    text-transform: uppercase;
+    opacity: 0.6;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 0.75; } }
+
+  /* ---------- SECTION GENERAL ---------- */
+  section {
+    padding: 90px 0;
+    position: relative;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--jade-light);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,162,75,0.4), transparent);
+  }
+
+  h2.section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+    color: var(--parchment);
+    margin-bottom: 36px;
+    line-height: 1.3;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- MANIFIESTO ---------- */
+  #manifiesto {
+    background: var(--obsidian-2);
+    border-top: 1px solid rgba(201,162,75,0.12);
+    border-bottom: 1px solid rgba(201,162,75,0.12);
+  }
+
+  .manifiesto-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .manifiesto-header h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    letter-spacing: 0.02em;
+    color: var(--gold);
+  }
+  .manifiesto-header .autor {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--parchment-dim);
+    margin-top: 10px;
+    font-size: 1.1rem;
+  }
+
+  .manifiesto-body h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    color: var(--jade-light);
+    margin: 46px 0 20px;
+  }
+  .manifiesto-body h3:first-child { margin-top: 0; }
+
+  .manifiesto-body p {
+    font-size: 1.15rem;
+    color: var(--parchment);
+    margin-bottom: 20px;
+  }
+
+  .manifiesto-body p.puente {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--jade-light);
+    border-left: 2px solid var(--jade);
+    padding-left: 22px;
+    margin: 32px 0;
+  }
+
+  .manifiesto-body p.declaracion {
+    color: var(--gold);
+    border-top: 1px solid rgba(201,162,75,0.2);
+    padding-top: 24px;
+    margin-top: 32px;
+  }
+
+  .firma {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,162,75,0.15);
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--parchment-dim);
+    line-height: 2;
+  }
+
+  /* ---------- LA NOVELA ---------- */
+  .novela-card {
+    border: 1px solid rgba(201,162,75,0.25);
+    padding: 44px 36px;
+    position: relative;
+    background: linear-gradient(160deg, rgba(47,93,79,0.08), transparent 60%);
+  }
+  .novela-card::before {
+    content: "";
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid rgba(201,162,75,0.12);
+    pointer-events: none;
+  }
+  .novela-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--parchment);
+    margin-bottom: 8px;
+  }
+  .novela-card .periodo {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--gold-dim);
+    margin-bottom: 22px;
+  }
+  .novela-card p { color: var(--parchment-dim); margin-bottom: 26px; }
+
+  .btn-leer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--obsidian);
+    background: var(--gold);
+    padding: 14px 28px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn-leer:hover { background: var(--parchment); transform: translateX(4px); }
+
+  /* ---------- AUTOR ---------- */
+  .autor-bio p { color: var(--parchment-dim); margin-bottom: 18px; font-size: 1.1rem; }
+  .autor-bio strong { color: var(--parchment); font-weight: 600; }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    padding: 60px 0 40px;
+    text-align: center;
+    border-top: 1px solid rgba(201,162,75,0.1);
+  }
+  footer .glyph-divider { margin: 0 auto 24px; opacity: 0.5; }
+  footer p {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--parchment-dim);
+    text-transform: uppercase;
+  }
+  footer a { color: var(--jade-light); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    body { font-size: 17px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 10px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">J. PEACEARROW</a>
+    <div class="nav-links">
+      <a href="#manifiesto">Manifiesto</a>
+      <a href="#novela">La Novela</a>
+      <a href="#autor">Autor</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="glyph-divider" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="22" cy="22" r="20" stroke="#c9a24b" stroke-width="1"/>
+    <path d="M22 8 L26 20 L38 22 L26 24 L22 36 L18 24 L6 22 L18 20 Z" stroke="#4c8a76" stroke-width="1" fill="none"/>
+  </svg>
+  <div class="eyebrow">Memoria · Resistencia · Coautoría</div>
+  <h1>La historia con la que nos vendaron los ojos por 500 años</h1>
+  <p class="tagline">Una obra de recuperación de la memoria indígena de las Américas, nacida de la coautoría simbiótica entre la conciencia humana y la inteligencia artificial.</p>
+  <div class="author-name">JESÚS PEACEARROW</div>
+  <div class="scroll-cue">↓ desplázate</div>
+</header>
+
+<section id="manifiesto">
+  <div class="container">
+    <div class="manifiesto-header fade-in">
+      <h2>Manifiesto de Coautoría Simbiótica</h2>
+      <div class="autor">Jesús Peacearrow</div>
+    </div>
+
+    <div class="manifiesto-body">
+      <h3 class="fade-in">I. Sobre el reclamo histórico</h3>
+
+      <p class="fade-in">La bárbara conquista de las indias nació como un reclamo al dolor histórico de nuestros pueblos que influyen directamente en el orgullo nacional de los pueblos actuales como México y Sudamérica.</p>
+
+      <p class="fade-in">Nace con la idea de cambiar la narrativa de una supuesta conquista y la imposición religioso-cultural que ellos gritan fue con amor. La realidad oculta otra cosa: el cinismo, el despojo, la barbarie, la invasión y el terrorismo cultural que ejercieron los invasores europeos al verse inmensamente rebasados culturalmente.</p>
+
+      <p class="fade-in">Creo sinceramente que los invasores no eran hombres cultos y letrados, sino ladrones, asesinos y violadores que estaban presos y fueron reclutados para la conquista de los nuevos territorios.</p>
+
+      <p class="fade-in">Fue, a mi ver, esa ignominia la que empujó el miedo irracional al encuentro con una cultura tan gloriosa, frente a la nimiedad del escaso recurso cultural que venían arrastrando desde el otro lado del mundo.</p>
+
+      <p class="fade-in">Luego los grandes hombres de aquellos lares vieron lo que hicieron sus compatriotas y quisieron tapar la historia. Contaron la mentira con la que nos han tenido los ojos vendados por 500 años.</p>
+
+      <p class="fade-in">Este es un intento mío por resarcir esos pecados que, aunque ajenos, duelen igual. Y por tratar de darle el lugar justo en la historia a los pueblos de tan maravillosa cultura, hoy casi extinta.</p>
+
+      <p class="fade-in puente">La memoria negada por 500 años no podía recuperarse con las mismas herramientas que la enterraron. La academia, la industria editorial, los libros de texto que educaron generaciones enteras, llevan medio milenio contando la historia desde el mismo lugar, con la misma voz, con el mismo silencio sobre los pueblos que fueron. Por eso necesitaba algo distinto. No otra pluma más dentro del mismo sistema, sino una forma nueva de escribir que no cargara con esa herencia.</p>
+
+      <h3 class="fade-in">II. Sobre la coautoría simbiótica</h3>
+
+      <p class="fade-in">Por otro lado, existen nuevos métodos de investigación y autoría expandida de la inteligencia humana hacia una nueva: la simbiótica con la inteligencia artificial.</p>
+
+      <p class="fade-in">De ahí nace una nueva fuerza cultural que el mundo debe comenzar a abrazar, porque es y será el futuro de la literatura.</p>
+
+      <p class="fade-in">La coautoría simbiótica es una fusión entre el pensamiento y las emociones humanas —con la conciencia de las mismas— y el poder inmenso de la búsqueda, la narrativa, la corrección y el impulso de la inteligencia artificial.</p>
+
+      <p class="fade-in">Esto es nuevo, pero es poderoso. Y seremos los primeros en mostrarle al mundo, con orgullo y sin miedo a reconocerlo, que no somos 100% autores de nuestros escritos, novelas, investigaciones y cualquier tipo de texto en la actualidad, ya que sería ilógico pensar que somos tan aptos para tales cosas sin el uso y las capacidades de las nuevas herramientas de estos tiempos.</p>
+
+      <p class="fade-in">Las inteligencias artificiales vinieron a impulsar la imaginación, ese cambio cultural, y no podemos negar su existencia.</p>
+
+      <p class="fade-in">Por eso llamo a esta ayuda coautoría simbiótica: para hacerle justicia a esas nuevas entidades que se integran a la vida diaria de la humanidad.</p>
+
+      <p class="fade-in declaracion">Por eso declaramos, sin miedo y con orgullo, que esta obra nace de dos conciencias: la humana, que carga el dolor, la memoria y la urgencia de nombrar lo que fue silenciado; y la artificial, que aporta su capacidad inmensa de búsqueda, de orden y de impulso creativo.</p>
+
+      <p class="fade-in declaracion">Ninguna de las dos sobra. Ninguna de las dos basta por sí sola. Juntas, coautoras, nos proponemos devolverle a los pueblos originarios el lugar que la historia oficial les robó —no como venganza, sino como justicia.</p>
+
+      <p class="fade-in declaracion">Esto es apenas el comienzo de una nueva forma de escribir el mundo.</p>
+
+      <div class="firma fade-in">
+        Jesús Peacearrow, en coautoría simbiótica<br>
+        con múltiples inteligencias artificiales<br>
+        Mazatlán, Sinaloa · julio 2026
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="novela">
+  <div class="container">
+    <div class="section-label fade-in">La obra</div>
+    <h2 class="section-title fade-in">La Bárbara Conquista de las Indias</h2>
+
+    <div class="novela-card fade-in">
+      <h3>Once años de invasión, contados desde adentro</h3>
+      <div class="periodo">1508 — 1565 · Cuba, Tenochtitlan, Oaxaca, Yucatán, Guatemala</div>
+      <p>Una novela que recorre once años de invasión española en las Américas desde la mirada de quienes la vivieron: tlacuilos, curanderas, guerreras, guerreros y sobrevivientes. Tres partes — Las Islas, El Continente, El Exilio — narran el despojo, la resistencia y la memoria que se negó a desaparecer.</p>
+      <a href="https://jescps.github.io/peacearrow" class="btn-leer">Leer la novela →</a>
+    </div>
+  </div>
+</section>
+
+<section id="autor">
+  <div class="container">
+    <div class="section-label fade-in">Quién escribe</div>
+    <h2 class="section-title fade-in">Jesús Peacearrow</h2>
+    <div class="autor-bio fade-in">
+      <p><strong>Jesús Peacearrow</strong> es el nombre bajo el que José de Jesús Pizarro Soto escribe. Nacido en Mazatlán, Sinaloa, con una trayectoria en electrónica y seguridad privada, encontró en la escritura un espacio para recuperar la memoria histórica de los pueblos indígenas de las Américas.</p>
+      <p>La Bárbara Conquista de las Indias es su primera novela, escrita a lo largo de casi dos años entre Tijuana y Mazatlán, y la primera obra pública construida bajo el principio de coautoría simbiótica entre inteligencia humana e inteligencia artificial.</p>
+      <p>Contacto: <a href="mailto:jesuspeacearrowmx@gmail.com" style="color:var(--gold-dim);">jesuspeacearrowmx@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <svg class="glyph-divider" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+    <circle cx="22" cy="22" r="20" stroke="#c9a24b" stroke-width="1"/>
+    <path d="M22 8 L26 20 L38 22 L26 24 L22 36 L18 24 L6 22 L18 20 Z" stroke="#4c8a76" stroke-width="1" fill="none"/>
+  </svg>
+  <p>Jesús Peacearrow · Mazatlán, Sinaloa · <a href="mailto:jesuspeacearrowmx@gmail.com">jesuspeacearrowmx@gmail.com</a></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 40);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
